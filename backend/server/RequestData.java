@@ -70,6 +70,21 @@ public class RequestData {
         return this.exchange.getResponseHeaders();
     }
 
+    /**
+     * Starts sending the response back. The response can be sent before the responseBody has been written to, as long as you know how long the response will ultimately be.
+     *
+     * @param responseCode The response code to send back e.g. 200 if OK, 404 if not found, etc
+     * @param responseLength The number of bytes of the response.
+     */
+    public void sendResponse(int responseCode, int responseLength) {
+        try {
+            System.out.println("Sending response.");
+            this.exchange.sendResponseHeaders(responseCode, responseLength);
+        } catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 
     /**
      * This returns the request body converted into JSON.

@@ -1,0 +1,29 @@
+ATTACH 'DatabaseLinked.db' AS other
+
+-- Organizations Table
+CREATE TABLE organizations (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  type TEXT NOT NULL, -- e.g., 'school', 'sponsor'
+  resources TEXT,     -- idk what this means
+  contact_info TEXT   -- phone #, gmail
+);
+
+-- Users Table
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  real_name TEXT NOT NULL,
+  username TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  organization_id INTEGER,
+  FOREIGN KEY (organization_id) REFERENCES organizations (id)
+);
+
+-- Invitations Table
+CREATE TABLE invitations (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL
+  organization_id INTEGER NOT NULL,
+  token TEXT NOT NULL,
+  FOREIGN KEY (organization_id) REFERENCES organizations (id)
+);
