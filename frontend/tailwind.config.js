@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js}'],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
+		fontFamily: {
+			sans: ['Roboto', 'Calibri'],
+			display: ['Poppins']
+		},
 		extend: {
 			colors: {
 				light: {
