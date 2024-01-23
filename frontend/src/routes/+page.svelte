@@ -14,10 +14,14 @@
 	<div class="flex items-center gap-7">
 		<a
 			href="/login"
-			class="btn bg-accent1 text-light-900 drop-shadow-sm hover:drop-shadow-lg hover:text-accent2-800 transition-[filter] transition-colors"
-			bind:clientHeight={buttonHeight}
-			>Open Nestwork</a
+			class="landing-btn bg-accent1 text-light-900 drop-shadow-sm hover:drop-shadow-lg hover:text-accent2-800"
+			bind:clientHeight={buttonHeight}>Open Nestwork</a
 		>
-		<a href="/signup" style="height: {buttonHeight}px;" class="btn hover:text-accent2-400 border-dashed border-accent2 hover:border-accent2-400 border-2 box-border transition-colors text-accent2 flex items-center justify-center duration-200">Sign up</a>
+		<a
+			href="/signup"
+			style="height: {buttonHeight}px;"
+			class="landing-btn hover:text-accent2-400 border-dashed border-accent2 hover:border-accent2-400 border-2 box-border transition-colors text-accent2 flex items-center justify-center duration-200"
+			>Sign up</a
+		>
 	</div>
 </div>

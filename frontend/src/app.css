@@ -6,8 +6,11 @@
 @tailwind utilities;
 
 @layer components {
-	.btn {
-		border-radius: 10px;
-		@apply text-lg px-6 py-4;
+	.landing-btn {
+		@apply text-lg px-6 py-4 rounded-xl;
+	}
+
+	.login-btn {
+		@apply text-lg px-6 py-3 rounded-xl;
 	}
 }
