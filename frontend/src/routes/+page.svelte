@@ -21,7 +21,7 @@
 			href="/signup"
 			style="height: {buttonHeight}px;"
 			class="landing-btn hover:text-accent2-400 border-dashed border-accent2 hover:border-accent2-400 border-2 box-border transition-colors text-accent2 flex items-center justify-center duration-200"
-			>Sign up</a
+			>Join</a
 		>
 	</div>
 </div>

@@ -1,8 +1,5 @@
 package server;
 
-import com.google.gson.JsonParser;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonElement;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.BufferedReader;
@@ -60,14 +57,20 @@ public class RequestData {
     }
 
     /**
-     * Gets a file output stream that can be written to write the repsonse body. This will not work if sendResponse is not called first.
-     * @return The response body output stream.
+     * This sends the response back to the client.
+     * @param responseCode The response code to send to the client.
+     * @param response
      */
-    public OutputStream getResponseBodyStream() {
-        if (!this.responseSent) {
-            System.out.println("Warning: sendResponse() not called yet. getResponseBodyStream() will not have intended behaviour.");
+    public void sendResponse(int responseCode, byte[] response) {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+            Date date = new Date();
+            System.out.println("Sending response -- " + dateFormat.format(date));
+            this.exchange.sendResponseHeaders(responseCode, response.length);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
-        return this.exchange.getResponseBody();
+        this.responseSent = true;
     }
 
     /**
@@ -76,39 +79,6 @@ public class RequestData {
      */
     public Headers getResponseHeaders() {
         return this.exchange.getResponseHeaders();
-    }
-
-    /**
-     * Starts sending the response back. The response can be sent before the responseBody has been written to, as long as you know how long the response will ultimately be. This must be called before getResponseBodyStream, otherwise it will not work.
-     *
-     * @param responseCode The response code to send back e.g. 200 if OK, 404 if not found, etc
-     * @param responseLength The number of bytes of the response.
-     */
-    public void sendResponse(int responseCode, int responseLength) {
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-            Date date = new Date();
-            System.out.println("Sending response -- " + dateFormat.format(date));
-            this.exchange.sendResponseHeaders(responseCode, responseLength);
-        } catch(IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        this.responseSent = true;
-    }
-
-
-    /**
-     * This returns the request body converted into JSON.
-     * @return JSON if the request body can be converted, null otherwise.
-     */
-    public JsonObject getJson() {
-        if (!this.isJson) {
-            return null;
-        }
-
-        JsonElement element = JsonParser.parseString(this.body);
-        JsonObject json = element.getAsJsonObject();
-        return json;
     }
 
 
