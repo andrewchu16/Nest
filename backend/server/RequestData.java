@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URI;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * This stores the request data sent by an HTTP request.
@@ -20,6 +23,7 @@ public class RequestData {
     private URI uri;
     private boolean isJson;
     private HttpExchange exchange;
+    private boolean responseSent;
 
     /**
      * This constructs a new RequestData object from an HttpExchange object.
@@ -30,6 +34,7 @@ public class RequestData {
         this.exchange = exchange;
         this.method = exchange.getRequestMethod();
         this.uri = exchange.getRequestURI();
+        this.responseSent = false;
 
         // Get the request body as a string.
         BufferedReader bodyReader = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
@@ -55,10 +60,13 @@ public class RequestData {
     }
 
     /**
-     * Gets a file output stream that can be written to to write the repsonse body.
+     * Gets a file output stream that can be written to write the repsonse body. This will not work if sendResponse is not called first.
      * @return The response body output stream.
      */
     public OutputStream getResponseBodyStream() {
+        if (!this.responseSent) {
+            System.out.println("Warning: sendResponse() not called yet. getResponseBodyStream() will not have intended behaviour.");
+        }
         return this.exchange.getResponseBody();
     }
 
@@ -71,18 +79,21 @@ public class RequestData {
     }
 
     /**
-     * Starts sending the response back. The response can be sent before the responseBody has been written to, as long as you know how long the response will ultimately be.
+     * Starts sending the response back. The response can be sent before the responseBody has been written to, as long as you know how long the response will ultimately be. This must be called before getResponseBodyStream, otherwise it will not work.
      *
      * @param responseCode The response code to send back e.g. 200 if OK, 404 if not found, etc
      * @param responseLength The number of bytes of the response.
      */
     public void sendResponse(int responseCode, int responseLength) {
         try {
-            System.out.println("Sending response.");
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+            Date date = new Date();
+            System.out.println("Sending response -- " + dateFormat.format(date));
             this.exchange.sendResponseHeaders(responseCode, responseLength);
         } catch(IOException ex) {
             System.out.println(ex.getMessage());
         }
+        this.responseSent = true;
     }
 
 

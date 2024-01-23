@@ -1,5 +1,4 @@
-import server.MethodHandler;
-import server.RequestData;
+package server;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -38,5 +37,7 @@ public class EmptyMethodHandler implements MethodHandler {
             Date date = new Date();
             System.out.println("-- " + data.getMethod() + " " + dateFormat.format(date) + " -- " + data.getUri().toString());
         }
+
+        data.sendResponse(200, -1);
     }
 }

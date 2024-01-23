@@ -10,8 +10,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLDecoder;
 
-import
-
 public class SearchMethodHandler implements MethodHandler {
     /**
      *
@@ -30,7 +28,8 @@ public class SearchMethodHandler implements MethodHandler {
 
         // idk how you get the sql connection
         // then add it to the response body.
-        Organization resultOrganization = Organization.searchOrganization(searchQuery, sqlConnection);
+//        Organization resultOrganization = Organization.searchOrganization(searchQuery, sqlConnection);
+        Organization resultOrganization = null;
         if (resultOrganization == null) {
             // send a 402 or 406 response idk https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses
             data.sendResponse(402, 0);
