@@ -30,7 +30,7 @@ public class EmptyMethodHandler implements MethodHandler {
      * @param data The request data.
      */
     @Override
-    public void handleMethod(RequestData data) {
+    public void handleMethod(Request data) {
         // do nothing.
         if (this.alertWhenTriggered) {
             DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -38,6 +38,6 @@ public class EmptyMethodHandler implements MethodHandler {
             System.out.println("-- " + data.getMethod() + " " + dateFormat.format(date) + " -- " + data.getUri().toString());
         }
 
-        data.sendResponse(200, -1);
+        data.sendResponse(200, null);
     }
 }

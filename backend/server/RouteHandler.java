@@ -65,7 +65,7 @@ public class RouteHandler implements HttpHandler {
      */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        RequestData requestData = new RequestData(exchange);
+        Request requestData = new Request(exchange);
 
         MethodHandler methodHandler = this.methodHandlers.get(requestData.getMethod());
 
