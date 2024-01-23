@@ -1,7 +1,23 @@
-<!-- Landing Page -->
+<script lang="ts">
+	let buttonHeight: number;
+	$: console.log(buttonHeight);
+</script>
 
-<h1
-	class="flex justify-center items-center font-display font-bold text-6xl h-screen text-dark bg-light-900"
->
-	Landing Page
-</h1>
+<svelte:head>
+	<title>Nestwork Landing Page</title>
+</svelte:head>
+
+<div class="w-screen h-screen flex flex-col justify-center items-center bg-light-900">
+	<h1 class="font-display font-bold text-8xl text-dark-600 mb-8 text-center">
+		Welcome to <span class="text-grad-1">Nestwork</span>.
+	</h1>
+	<div class="flex items-center gap-7">
+		<a
+			href="/login"
+			class="btn bg-accent1 text-light-900 drop-shadow-sm hover:drop-shadow-lg hover:text-accent2-800 transition-[filter] transition-colors"
+			bind:clientHeight={buttonHeight}
+			>Open Nestwork</a
+		>
+		<a href="/signup" style="height: {buttonHeight}px;" class="btn hover:text-accent2-400 border-dashed border-accent2 hover:border-accent2-400 border-2 box-border transition-colors text-accent2 flex items-center justify-center duration-200">Sign up</a>
+	</div>
+</div>

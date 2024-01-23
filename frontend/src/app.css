@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap');
+@import "./gradient.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
-    .h-grad {
-        
-    }
+	.btn {
+		border-radius: 10px;
+		@apply text-lg px-6 py-4;
+	}
 }

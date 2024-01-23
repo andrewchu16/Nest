@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.text-grad-1 {
+		@apply bg-accent1;
+		background: -webkit-linear-gradient(theme(colors.accent2.500), theme(colors.accent1.400));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
