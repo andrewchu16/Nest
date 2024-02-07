@@ -111,6 +111,17 @@ public class Database {
         return null;
     }
 
+    public Organization getOrgByName(String name) {
+        name = name.toUpperCase();
+        for (Organization org : this.orgs) {
+            if (org.getName().toUpperCase().equals(name)) {
+                return org;
+            }
+        }
+
+        return null;
+    }
+
     public boolean login(String username, String password) {
         User user = this.getUserByUsername(username);
         String salt = user.getSalt();
