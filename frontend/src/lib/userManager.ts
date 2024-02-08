@@ -9,7 +9,7 @@ const createUserManager = () => {
 
 	firestore.subscribe((value) => (db = value));
 
-	async function login(email: string, password: string) {
+	async function login(email: string, password: string): Promise<UserCredential> {
 		auth.signIn(email, password).then((userCredential: UserCredential) => {
 			if (!checkUserAccountExists(userCredential.user.uid)) {
 				const userData: UserData = {
@@ -20,12 +20,14 @@ const createUserManager = () => {
 				};
 
 				createUserAccount(userData, userCredential);
+				return new Promise<UserCredential>((resolve) => resolve(userCredential));
 			}
 		}).catch((e) => {
-			console.log(`Invalid email/password email=${email} password=${password}` + e);
+			const errorMsg = `Invalid email/password email=${email} password=${password}` + e;
+			console.log(errorMsg);
+			return new Promise<UserCredential>((resolve, reject) => reject(new Error(errorMsg)));
 		});
 
-		
 	}
 
 	async function signUp(userData: UserData, password: string) {

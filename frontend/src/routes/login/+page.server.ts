@@ -1,5 +1,5 @@
 import { auth } from '$lib/admin.server';
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies }) => {
@@ -24,5 +24,11 @@ export const load: PageServerLoad = async ({ cookies }) => {
 		redirect(302, "/");
 	}
 
-	return { uid };
+	return { uid: uid };
 };
+
+export const actions: Actions = {
+	default: async (event) => {
+		
+	}
+}

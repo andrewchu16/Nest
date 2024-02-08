@@ -1,19 +1,12 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { auth } from '$lib/auth';
-	import { getIdToken, onAuthStateChanged } from 'firebase/auth';
 	import type { PageData } from '../$types';
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { userManager } from '$lib/userManager';
 	let buttonHeight: number;
 
 	export let data: PageData;
-
-	onMount(() => {
-		if (data.isLoggedIn) {
-			goto("/");
-		}
-	})
 </script>
 
 <svelte:head>
@@ -36,9 +29,10 @@
 
 				try {
 					if (email && password) {
-						auth.signIn(email, password).then((userCred) => {
+						userManager.login(email, password).then((userCred) => {
 							goto("/");
 						}).catch((error) => {
+							// invalid email/password probably
 							console.log(error);
 						});
 					}
