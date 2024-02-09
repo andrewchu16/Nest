@@ -4,7 +4,7 @@ export default {
 	theme: {
 		fontFamily: {
 			sans: ['Roboto', 'Calibri'],
-			display: ['Poppins']
+			display: ['Poppins', 'Arial Black']
 		},
 		extend: {
 			colors: {

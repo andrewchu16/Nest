@@ -15,33 +15,15 @@ const createAuth = () => {
 				if (dev) {
 					connectAuthEmulator(auth, 'http://localhost:9099');
 				}
-				set(auth);
 			}
+			set(auth);
 		}
-
+		
 		if (browser) init();
 	});
 
-	async function signIn(email: string, password: string) {
-		const { signInWithEmailAndPassword } = await import('firebase/auth');
-		return signInWithEmailAndPassword(auth, email, password);
-	}
-
-	async function signUp(email: string, password: string) {
-		const { createUserWithEmailAndPassword } = await import('firebase/auth');
-		return createUserWithEmailAndPassword(auth, email, password);
-	}
-
-	async function signOut() {
-		const { signOut } = await import('firebase/auth');
-		await signOut(auth);
-	}
-
 	return {
 		subscribe,
-		signIn,
-		signUp,
-		signOut
 	};
 };
 

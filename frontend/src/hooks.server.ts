@@ -1,7 +1,10 @@
-import { auth } from '$lib/admin.server';
+import { auth as authStore } from '$lib/admin.server';
 import type { Handle } from '@sveltejs/kit';
+import type { Auth } from 'firebase-admin/auth';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	let auth: Auth;
+	authStore.subscribe((value) => auth = value);
 	const { cookies, locals } = event;
 
 	locals.user = null; // default if session cookie fails
