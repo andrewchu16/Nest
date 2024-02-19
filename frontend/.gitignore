@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 
 serviceAccountKey.json
 emulator-data/
+firestore-debug.log
