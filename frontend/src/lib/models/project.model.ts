@@ -5,7 +5,7 @@ export interface Project {
     name: string;
     owner: userID;
     orgs: orgID[];
-    thumbnail: string | undefined;
+    thumbnailPath: string | undefined;
 }
 
 export type ProjectID = string;
