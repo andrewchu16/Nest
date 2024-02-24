@@ -1,9 +1,0 @@
-// attached to Database.db
-
-CREATE TABLE organization_partners (
-  school_id INTEGER NOT NULL,
-  partner_id INTEGER NOT NULL,
-  FOREIGN KEY (school_id) REFERENCES organizations (id),
-  FOREIGN KEY (partner_id) REFERENCES organizations (id),
-  PRIMARY KEY (school_id, partner_id)
-);
