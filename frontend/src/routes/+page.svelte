@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { userStore } from "../stores/userStore";
+	import Body from "$lib/components/Body.svelte";
 
     let loading = true;
 
@@ -12,4 +13,8 @@
 <svelte:head>
     <title>Dashboard</title>
 </svelte:head>
-dashboard
+<Body>
+    <svelte:fragment slot="page-content">
+        Dashboard
+    </svelte:fragment>
+</Body>
