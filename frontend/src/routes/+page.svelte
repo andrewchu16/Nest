@@ -1,20 +1,15 @@
-<!-- dashboard -->
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import { userManager } from "$lib/userManager";
-	import { redirect } from "@sveltejs/kit";
-	import type { PageServerData } from "./$types";
+	import { onMount } from "svelte";
+	import { userStore } from "../stores/userStore";
 
-    export let data: PageServerData;
+    let loading = true;
 
-    if (data.token) {
-        userManager.loginWithToken(data.token).then((creds) => {
-			console.log("logged in on dashboard " + creds.user.uid);
-		}).catch((e) => {
-            console.log("redirecting dashboard to login");
-			redirect(302, "/login");
-		});
-    }
+    onMount(() => {
+        loading = false;
+    });
 </script>
 
-dashboard!
+<svelte:head>
+    <title>Dashboard</title>
+</svelte:head>
+dashboard

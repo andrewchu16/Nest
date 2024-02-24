@@ -52,11 +52,13 @@ const createAuth = () => {
 		connectAuthEmulator(auth, "http://localhost:9099");
 	}
 
+	auth.setPersistence({ type: "SESSION" });
+
 	return auth;
 };
 
 const createStorage = () => {
-	console.log("creating storage");
+	console.log("creating firebase storage");
 	const storage = getStorage(app);
 
 	if (dev) {

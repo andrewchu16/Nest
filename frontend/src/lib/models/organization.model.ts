@@ -1,19 +1,21 @@
-import type { userID } from "./userData.model";
+import type { UserID } from "./userData.model";
 
 export default interface Organization {
     name: string;
-    owners: userID[];
-    members: userID[];
+    owners: UserID[];
+    members: UserID[];
     thumbnailPath: string | undefined;
     description: string | undefined;
     websiteUrl: string | undefined;
     resources: Resource[];
     city: string;
     country: string;
-    contact: userID;
+    contact: UserID;
+    industry: string;
+    sponsorRequirements: string[];
 }
 
-export type orgID = string;
+export type OrgID = string;
 
 export interface Resource {
     name: string;

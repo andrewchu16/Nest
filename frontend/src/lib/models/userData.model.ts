@@ -1,11 +1,17 @@
 export default interface UserData {
-    username: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    profileImagePath: string | undefined;
-    bio: string | undefined;
-    
+	username: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	profileImagePath: string | undefined;
+	bio: string | undefined;
+	position: Position[];
+	uid: UserID;
 }
 
-export type userID = string;
+export type UserID = string;
+
+export interface Position {
+	title: string;
+	description: string | undefined;
+}
