@@ -4,21 +4,19 @@ export default interface Organization {
     name: string;
     owners: UserID[];
     members: UserID[];
-    thumbnailPath: string | null;
+    thumbnailUrl: string | null;
     description: string | null;
     websiteUrl: string | null;
-    resources: Resource[];
-    city: string;
-    country: string;
-    contact: UserID;
+    contactEmail: string;
     industry: string;
     sponsorRequirements: string[];
+    type: OrgType;
 }
 
 export type OrgID = string;
+export type OrgType = "Business" | "School" | "Charity" | null;
 
 export interface Resource {
     name: string;
     description: string | null;
-    thumbanilPath: string | null;
 }

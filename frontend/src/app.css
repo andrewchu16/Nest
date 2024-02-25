@@ -15,8 +15,12 @@
 		@apply px-7 py-3 rounded-xl;
 	}
 
-	.text-field {
+	.login-text-field {
 		@apply text-dark placeholder:text-dark-700 outline-none shadow-inner rounded-xl shadow-dark-800/30 focus:shadow-dark-700/50 px-4 py-3 text-lg bg-light-900;
+	}
+
+	.text-field {
+		@apply text-dark-600 placeholder:text-dark-700 outline-none shadow-inner rounded-xl shadow-dark-800/30 focus:shadow-dark-700/50 px-4 py-2 bg-light-900;
 	}
 }
 

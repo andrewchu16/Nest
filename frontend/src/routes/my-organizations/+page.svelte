@@ -10,10 +10,10 @@
 </script>
 
 <svelte:head>
-    <title>Dashboard</title>
+    <title>My Organizations</title>
 </svelte:head>
 <Body>
     <svelte:fragment slot="page-content">
-        Dashboard
+        My organizations
     </svelte:fragment>
 </Body>

@@ -1,3 +1,5 @@
+import type { OrgID } from "./organization.model";
+
 export default interface UserData {
 	firstName: string;
 	lastName: string;
@@ -12,5 +14,6 @@ export type UserID = string;
 
 export interface Position {
 	title: string;
+	organization: OrgID | null;
 	description: string | null;
 }

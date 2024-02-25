@@ -70,10 +70,10 @@
 				const userData: UserData = {
 					firstName: firstName,
 					lastName: lastName,
-					email: (user.email ? user.email : ""),
+					email: user.email ? user.email : '',
 					profileImagePath: null,
 					bio: null,
-					positions: [{ title: 'No Position', description: null }],
+					positions: [{ title: 'No Position', description: null, organization: null }],
 					uid: user.uid
 				};
 				await setDoc(userDocRef, userData);
@@ -119,7 +119,7 @@
 				email: email,
 				profileImagePath: null,
 				bio: null,
-				positions: [{ title: 'No Position', description: null }],
+				positions: [{ title: 'No Position', description: null, organization: null }],
 				uid: uid
 			};
 
@@ -152,7 +152,7 @@
 			{#if signup}
 				<input
 					placeholder="Name"
-					class="text-field flex-grow"
+					class="login-text-field flex-grow"
 					required
 					type="text"
 					name="name"
@@ -161,7 +161,7 @@
 			{/if}
 			<input
 				placeholder="Email"
-				class="text-field flex-grow"
+				class="login-text-field flex-grow"
 				required
 				type="email"
 				name="email"
@@ -169,7 +169,7 @@
 			/>
 			<input
 				placeholder="Password"
-				class="text-field flex-grow"
+				class="login-text-field flex-grow"
 				required
 				type="password"
 				name="password"
@@ -178,7 +178,7 @@
 			{#if signup}
 				<input
 					placeholder="Confirm Password"
-					class="text-field flex-grow"
+					class="login-text-field flex-grow"
 					required
 					type="password"
 					name="confirmPassword"
