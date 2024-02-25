@@ -11,6 +11,7 @@
 	import { FirebaseError } from 'firebase/app';
 	import { doc, setDoc, type DocumentData, DocumentReference, getDoc } from 'firebase/firestore';
 	import type UserData from '$lib/models/userData.model';
+	import type { Project } from '$lib/models/project.model';
 
 	export let signup = false;
 
@@ -77,6 +78,22 @@
 					uid: user.uid
 				};
 				await setDoc(userDocRef, userData);
+
+				// Create user project
+				const projectDocRef: DocumentReference<DocumentData, DocumentData> = doc(
+					db,
+					'projects',
+					userData.uid
+				);
+				const projectData: Project = {
+					name: `${userData.firstName}'s Project'`,
+					owner: userData.uid,
+					ownerOrg: null,
+					orgs: [],
+					thumbnailPath: null
+				};
+
+				await setDoc(projectDocRef, projectData);
 			}
 
 			// Redirect to dashboard.
@@ -124,6 +141,22 @@
 			};
 
 			await setDoc(doc(db, 'users', uid), userData);
+
+			// Create user project
+			const projectDocRef: DocumentReference<DocumentData, DocumentData> = doc(
+				db,
+				'projects',
+				userData.uid
+			);
+			const projectData: Project = {
+				name: `${userData.firstName}'s Project'`,
+				owner: userData.uid,
+				ownerOrg: null,
+				orgs: [],
+				thumbnailPath: null
+			};
+
+			await setDoc(projectDocRef, projectData);
 		} catch (error) {
 			if (error instanceof FirebaseError) {
 				console.log(error);
