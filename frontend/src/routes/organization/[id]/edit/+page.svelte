@@ -43,7 +43,7 @@
 		const orgDocRef = doc(db, 'organizations', data.orgId);
 		await setDoc(orgDocRef, organizationData);
 
-		goto(`/organizations/${data.orgId}`);
+		goto(`/organization/${data.orgId}`);
 	};
 </script>
 

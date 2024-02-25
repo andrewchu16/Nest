@@ -3,10 +3,10 @@
 </script>
 
 <svelte:head>
-	<title>Search</title>
+	<title>Nest Help Bot</title>
 </svelte:head>
 <Body>
 	<svelte:fragment slot="page-content">
-	Search
+	HELP BOT
 	</svelte:fragment>
 </Body>

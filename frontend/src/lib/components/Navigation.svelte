@@ -20,16 +20,12 @@
 			name: 'Search'
 		},
 		{
-			href: '/my-projects',
-			name: 'My Projects'
-		},
-		{
 			href: '/my-organizations',
 			name: 'My Organizations'
 		},
 		{
-			href: '/settings',
-			name: 'Settings'
+			href: "/help",
+			name: "Nest Help Bot"
 		}
 	];
 
