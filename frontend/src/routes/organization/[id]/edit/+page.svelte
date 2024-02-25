@@ -6,7 +6,6 @@
 	import { auth, db } from '$lib/firebase';
 	import { goto } from '$app/navigation';
 	import type { LayoutData } from '../$types';
-	import { redirect } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 
 	const orgTypes: OrgType[] = ['Business', 'School', 'Charity'];
