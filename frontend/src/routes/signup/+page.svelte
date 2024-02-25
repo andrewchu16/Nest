@@ -1,9 +1,18 @@
 <script>
 	import Authenticate from '$lib/components/Authenticate.svelte';
+	import Circle from '$lib/assets/Circle.svelte';
 </script>
 
 <svelte:head>
 	<title>Sign Up</title>
 </svelte:head>
 
-<Authenticate signup={true} />
+<div class="absolute -left-32 -top-40">
+	<Circle color="#475d3c" radius={500} />
+</div>
+<div class="absolute right-14 bottom-14">
+	<Circle color="#f5ecf1" radius={280} />
+</div>
+<div class="flex w-screen h-screen justify-center items-center bg-light-900">
+	<Authenticate signup={true} />
+</div>

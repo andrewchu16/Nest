@@ -46,11 +46,13 @@
 
 <nav class="bg-accent3 w-full h-full flex flex-col items-center justify-between py-12">
 	<img src={nestLogo} class="max-w-40 w-[60%] cursor-pointer" alt="Nest Logo" draggable="false" />
-	<div class="flex flex-col gap-3 text-light">
-		{#each navLinks as link}
-			<a href={link.href} class:font-bold={link.href === $page.url.pathname} class="hover:text-accent3-700">{link.name}</a
-			>
-		{/each}
+	<div class="flex flex-col justify-between basis-3/5">
+		<div class="flex flex-col gap-3 text-light">
+			{#each navLinks as link}
+				<a href={link.href} class:font-bold={link.href === $page.url.pathname} class="hover:text-accent3-700">{link.name}</a
+				>
+			{/each}
+		</div>
+		<button class="text-light hover:text-accent3-700" on:click={signOutHandler}>Sign Out</button>
 	</div>
-	<button class="text-light hover:text-accent3-700" on:click={signOutHandler}>Sign Out</button>
 </nav>

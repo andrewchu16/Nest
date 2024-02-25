@@ -138,7 +138,7 @@
 	};
 </script>
 
-<div class="w-screen h-screen flex flex-col items-center justify-center bg-light-900 gap-6">
+<div class="flex flex-col items-center justify-center bg-light-900 gap-6">
 	<form class="flex flex-col gap-6" on:submit|preventDefault={submitForm}>
 		<h1 class="font-display text-5xl font-bold text-dark drop-shadow-lg">
 			{#if signup}
