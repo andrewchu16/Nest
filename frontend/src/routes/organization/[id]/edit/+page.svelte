@@ -150,7 +150,6 @@
 						name="organization-thumbnail"
 						class="text-field flex-grow"
 						placeholder="https://www.walmartcanada.ca/content/dam/walmart-canada/images/site-images/Store_front.png"
-						required
 						bind:value={organizationData.thumbnailUrl}
 					/>
 				</div>
