@@ -2,7 +2,7 @@ import openai
 from flask import Flask, request, jsonify
 import gradio as gr
 
-openai.api_key = "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" #api here
+openai.api_key = "####" #api here
 
 messages = [{"role": "system", "content": "You are a technical support expert that specializes in helping users navigating the Nest website which helps organizations network with school departments"}]
 
