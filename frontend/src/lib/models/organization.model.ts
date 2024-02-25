@@ -4,9 +4,9 @@ export default interface Organization {
     name: string;
     owners: UserID[];
     members: UserID[];
-    thumbnailPath: string | undefined;
-    description: string | undefined;
-    websiteUrl: string | undefined;
+    thumbnailPath: string | null;
+    description: string | null;
+    websiteUrl: string | null;
     resources: Resource[];
     city: string;
     country: string;
@@ -19,6 +19,6 @@ export type OrgID = string;
 
 export interface Resource {
     name: string;
-    description: string | undefined;
-    thumbanilPath: string | undefined;
+    description: string | null;
+    thumbanilPath: string | null;
 }

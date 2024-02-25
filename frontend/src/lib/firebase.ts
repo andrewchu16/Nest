@@ -1,5 +1,12 @@
 import { dev } from '$app/environment';
-import { getApps, type FirebaseOptions, initializeApp, getApp, deleteApp } from 'firebase/app';
+import {
+	getApps,
+	type FirebaseOptions,
+	initializeApp,
+	getApp,
+	deleteApp,
+	type FirebaseError
+} from 'firebase/app';
 import {
 	PUBLIC_FIREBASE_API_KEY,
 	PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -9,7 +16,7 @@ import {
 	PUBLIC_FIREBASE_APP_ID
 } from '$env/static/public';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
-import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { connectAuthEmulator, getAuth, type Persistence } from 'firebase/auth';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
 
 const firebaseConfig: FirebaseOptions = {
@@ -22,7 +29,7 @@ const firebaseConfig: FirebaseOptions = {
 };
 
 const createApp = () => {
-	console.log("creating app");
+	console.log('creating app');
 	let app;
 	if (getApps().length) {
 		app = getApp();
@@ -34,7 +41,7 @@ const createApp = () => {
 };
 
 const createFirestore = () => {
-	console.log("creating firestore");
+	console.log('creating firestore');
 	const firestore = getFirestore(app);
 
 	if (dev) {
@@ -45,26 +52,40 @@ const createFirestore = () => {
 };
 
 const createAuth = () => {
-	console.log("creating auth");
+	console.log('creating auth');
 	const auth = getAuth(app);
 
 	if (dev) {
-		connectAuthEmulator(auth, "http://localhost:9099");
+		connectAuthEmulator(auth, 'http://localhost:9099');
 	}
 
-	auth.setPersistence({ type: "SESSION" });
+	auth.setPersistence({ type: 'SESSION' });
 
 	return auth;
 };
 
 const createStorage = () => {
-	console.log("creating firebase storage");
+	console.log('creating firebase storage');
 	const storage = getStorage(app);
 
 	if (dev) {
-		connectStorageEmulator(storage, "localhost", 9199);
+		connectStorageEmulator(storage, 'localhost', 9199);
 	}
-}
+};
+
+export const convertFirebaseErrorToString = (error: FirebaseError): string => {
+	switch (error.code) {
+		case 'auth/invalid-credential':
+			return 'Invalid email/password.';
+		case 'auth/user-not-found':
+			return 'Account not found.';
+		case 'auth/wrong-password':
+			return 'Wrong password.';
+		case 'auth/popup-closed-by-user':
+			return 'Login popup closed.';
+	}
+	return error.code;
+};
 
 export const app = createApp();
 export const db = createFirestore();

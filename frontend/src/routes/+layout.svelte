@@ -48,14 +48,13 @@
 			const docData = docSnap.data();
 			console.log(docData);
 			const userData: UserData = {
-				username: docData['username']?.toString(),
 				firstName: docData['firstName']?.toString(),
 				lastName: docData['lastName']?.toString(),
 				email: docData['email']?.toString(),
 				profileImagePath: docData['profielImagePath']?.toString(),
 				bio: docData['bio']?.toString(),
 				uid: user.uid as UserID,
-				position: []
+				positions: []
 			};
 
 			// set the user store
