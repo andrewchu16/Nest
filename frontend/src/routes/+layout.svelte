@@ -4,7 +4,7 @@
 	import { auth, db } from '$lib/firebase';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { userStore } from '../stores/userStore';
+	import { userStore } from '$lib/stores/userStore';
 	import { doc, getDoc } from 'firebase/firestore';
 	import type UserData from '$lib/models/userData.model';
 	import type { UserID } from '$lib/models/userData.model';

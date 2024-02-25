@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import nestLogo from '$lib/icons/nest-logo-upscaled.png';
+	import nestLogo from '$lib/assets/icons/nest-logo-upscaled.png';
 	import { signOut } from 'firebase/auth';
 	import { auth } from '$lib/firebase';
 	import { goto } from '$app/navigation';
