@@ -73,7 +73,7 @@
 </svelte:head>
 <Body>
 	<svelte:fragment slot="page-content">
-		<div class="w-full h-full flex flex-col items-center px-8 py-12">
+		<div class="w-full h-full overflow-y-scroll flex flex-col items-center px-8 py-12">
 			<h1 class="font-display font-bold text-3xl text-dark text-center">Dashboard</h1>
 			<div class="w-5/6 max-w-[1200px] h-full flex flex-col gap-4">
 				{#each organizations as organization}

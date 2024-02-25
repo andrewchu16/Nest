@@ -15,10 +15,10 @@
 			href: '/',
 			name: 'Dashboard'
 		},
-		{
-			href: '/search',
-			name: 'Search'
-		},
+		// {
+		// 	href: '/search',
+		// 	name: 'Search'
+		// },
 		{
 			href: '/my-organizations',
 			name: 'My Organizations'

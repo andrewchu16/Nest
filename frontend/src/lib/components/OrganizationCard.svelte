@@ -41,7 +41,9 @@
 						>
 					</p>
 				{/if}
-				<p class="text-gray-600">Industry: {organization.industry}</p>
+				{#if organization.industry}
+					<p class="text-gray-600">Industry: {organization.industry}</p>
+				{/if}
 			</div>
 		</div>
 	</div>
