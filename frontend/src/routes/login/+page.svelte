@@ -6,10 +6,6 @@
 
 	$: screenWidth = 0;
 	$: screenHeight = 0;
-
-	$: if ($userStore.user !== null) {
-		goto("/");
-	}
 </script>
 
 <svelte:head>
