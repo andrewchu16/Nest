@@ -10,20 +10,18 @@
 	import type { UserID } from '$lib/models/userData.model';
 
 	const nonProtectedRoutes = ['/landing', '/login', '/signup'];
-
+	
 	let isMounted = false;
-
 	onMount(() => {
 		console.log('layout page mounting');
-
+		
 		// Get cached session data
 		const sessionData = window.sessionStorage.getItem('userData');
 		if (sessionData) {
 			console.log('loading session: ', sessionData);
 			$userStore = JSON.parse(sessionData);
 		}
-		isMounted = true;
-
+		
 		const unsubscribe = auth.onAuthStateChanged(async (user) => {
 			const pagePath = $page.url.pathname;
 
@@ -66,6 +64,8 @@
 				data: userData
 			});
 		});
+
+		isMounted = true;
 
 		return () => {
 			// Unsubscribe from auth state change.
