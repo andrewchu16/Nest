@@ -18,7 +18,7 @@
 		const unsubscribe = auth.onAuthStateChanged(async (user) => {
 			const uid = $userStore.data?.uid;
 			// Check to make sure the user is allowed to edit this organization.
-			if (!uid || !organizationData.owners.includes(uid)) {
+			if (data.exists && (!uid || !organizationData.owners.includes(uid))) {
 				console.log('not allowed to edit this page.');
 				goto('/');
 			}
@@ -195,7 +195,7 @@
 				{/if}
 				<button
 					type="submit"
-					class="login-btn bg-accent1 text-light-900 drop-shadow-sm hover:drop-shadow-lg hover:text-accent2-800"
+					class="btn bg-accent1 text-light-900 drop-shadow-sm hover:drop-shadow-lg hover:text-accent2-800"
 				>
 					{#if data.exists}
 						Edit Organization
