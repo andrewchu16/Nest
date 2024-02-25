@@ -23,7 +23,7 @@
 					<img
 						src={organization.thumbnailUrl}
 						alt={organization.name}
-						class="h-12 w-1 rounded-full object-cover"
+						class="h-12 w-12 rounded-full object-cover"
 					/>
 				{:else}
 					<span class="text-2xl font-bold">{getInitials(organization.name)}</span>
