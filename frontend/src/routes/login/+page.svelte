@@ -1,9 +1,15 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Circle from '$lib/assets/Circle.svelte';
 	import Authenticate from '$lib/components/Authenticate.svelte';
+	import { userStore } from '$lib/stores/userStore';
 
 	$: screenWidth = 0;
 	$: screenHeight = 0;
+
+	$: if ($userStore.user !== null) {
+		goto("/");
+	}
 </script>
 
 <svelte:head>

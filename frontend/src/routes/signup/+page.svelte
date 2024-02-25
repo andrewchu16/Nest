@@ -1,6 +1,12 @@
 <script>
 	import Authenticate from '$lib/components/Authenticate.svelte';
 	import Circle from '$lib/assets/Circle.svelte';
+	import { userStore } from '$lib/stores/userStore';
+	import { goto } from '$app/navigation';
+
+	$: if ($userStore.user !== null) {
+		goto("/");
+	}
 </script>
 
 <svelte:head>
